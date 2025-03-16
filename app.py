@@ -8,7 +8,7 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import asyncio
 
 # Ensure Streamlit does not run into async issues
-asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+#asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 
 # Initialize Flask app
