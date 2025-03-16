@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial RAG Model</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Financial Question Answering</h2>
+    <form id="queryForm">
+        <input type="text" id="query" placeholder="Enter your financial question" required>
+        <button type="submit">Ask</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("queryForm").onsubmit = async function(event) {
+            event.preventDefault();
+            let query = document.getElementById("query").value;
+            let response = await fetch("/query", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: query })
+            });
+            let data = await response.json();
+            document.getElementById("result").innerText = data.answer || data.error;
+        };
+    </script>
+</body>
+</html>
