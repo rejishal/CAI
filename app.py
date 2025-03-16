@@ -1,5 +1,12 @@
-#pip install flask sentence-transformers transformers faiss-cpu
+import subprocess
+import sys
 
+# List of required packages
+packages = ["flask", "sentence-transformers", "transformers", "faiss-cpu"]
+
+# Install missing packages
+for package in packages:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 from flask import Flask, request, jsonify, render_template
 import faiss
 import numpy as np
